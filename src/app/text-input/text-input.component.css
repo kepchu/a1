@@ -1,0 +1,10 @@
+div {
+    height: 30vh;
+    width: 100vw;
+    text-align: center;
+}
+
+textarea {
+    width: 80%;
+    height: 50%;
+}
