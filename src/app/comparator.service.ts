@@ -1,44 +1,23 @@
 import { Injectable } from '@angular/core';
 import { LoggerService } from './logger.service';
 import { InterfaceStringsService } from './interface-strings.service';
-import { logWarnings } from 'protractor/built/driverProviders';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ComparatorService {
 
-  // private textA: string="";
-  // private textB: string="";
-
-  private _ignoreWhitespaces: boolean = true;
-  private _ignoreCase: boolean = false;
-
   private messages;
+  private result:boolean;
 
+  public compare(ignoreWhitespaces: boolean, ignoreCase: boolean, textA: string, textB: string) {
 
-  // setTextA(text: string): void {
-  //   this.textA = text;
-  // }
-
-  // setTextB(text: string): void {
-  //   this.textB = text;
-  // }
-
-  // ignoreWhitespaces(b:boolean): void {
-  //   this._ignoreWhitespaces = b;
-  //   this.l.log("ignoreWhitespaces: " + b);
-  // }
-  // ignoreCase(b:boolean): void {
-  //   this._ignoreCase = b;
-  //   this.l.log("ignoreCase: " + b);
-  // }
-
-  public compare(ignoreWhitespaces: boolean, ignoreCase: boolean, textA: string, textB: string) : any {
+    this.l.log(ignoreWhitespaces + "; " + ignoreCase + "; " + textA + "; " + textB + ". ");
 
     if ((! textA) || (! textB)) {
       this.l.log(this.messages['no text']);
-      return this.messages['no text'];
+      return;// this.messages['no text'];
     }
 
     if (ignoreWhitespaces) {
@@ -55,7 +34,11 @@ export class ComparatorService {
     this.l.log(textA);
     this.l.log(textB);
 
-    return textA.localeCompare(textB) === 0;
+    this.result = textA.localeCompare(textB) === 0;
+  }
+
+  getResults(): Observable<boolean> {
+    return of(this.result);
   }
 
   private removeWhitespaces(input: string) : string {

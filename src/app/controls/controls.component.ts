@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { LoggerService } from '../logger.service';
 import { ComparatorService } from '../comparator.service';
 import { from } from 'rxjs';
@@ -17,16 +17,19 @@ export class ControlsComponent implements OnInit {
 
   result="no result yet";
 
-  textA = `ignore whitespaces
-  ignore case
-  copying mode
+  @Input() textA:string;
+  @Input() textB:string;
+
+  // textA = `ignore whitespaces
+  // ignore case
+  // copying mode
   
-  `
-  textB = `ignore whitespaces
-  ignore case
-  copying mode
+  // `
+  // textB = `ignore whitespaces
+  // ignore case
+  // copying mode
   
-  `
+  // `
 
   optionChange(optionId: string, status: boolean) {
 
@@ -49,9 +52,7 @@ export class ControlsComponent implements OnInit {
   compare() {
     console.log("calling comparator");
     // TODO: make result component that listens to comparator
-    this.result = this.comparator.compare(this.ignoreWhitespaces, this.ignoreCase, this.textA, this.textB);
-
-    this.l.log("COMPARED: " + this.result);
+    this.comparator.compare(this.ignoreWhitespaces, this.ignoreCase, this.textA, this.textB);
   }
 
   constructor(private l: LoggerService, private comparator: ComparatorService) { }

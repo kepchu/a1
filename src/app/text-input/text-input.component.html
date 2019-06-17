@@ -1,4 +1,11 @@
 <div>
-  <textarea #textA (input)="updateText('textA', textA.value)"></textarea>
-  <textarea #textB (input)="updateText('textB', textB.value)"></textarea>
+  <button #duplicate (click)="textB.value = textA.value" type="button"> duplicate text </button>
+  <br>
+
+    <textarea #textA (input)="0" [(ngModel)]="contentOfTextA"></textarea>
+    <textarea #textB (input)="0" [(ngModel)]="contentOfTextB"></textarea>
+    <!-- <textarea #textA (input)="updateText('textA', textA.value)"></textarea>
+    <textarea #textB (input)="updateText('textB', textB.value)"></textarea> -->
+    <app-controls [textA]="textA.value" [textB]="textB.value"></app-controls>
+
 </div>

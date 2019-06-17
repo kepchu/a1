@@ -10,15 +10,30 @@ import { LoggerService } from '../logger.service';
 
 export class TextInputComponent implements OnInit {
 
-  updateText(id: string, text: string){
-    if (id === "textA") {
-      this.comparator.setTextA(text);
-    } else {
-      this.comparator.setTextB(text);
-    }
-    
-    this.l.log(id + ': ' + text);
+  contentOfTextA: string = "";
+  contentOfTextB: string = "";
+
+  storeTexts(textA:string, textB:string){
+    this.contentOfTextA = textA;
+    this.contentOfTextB = textB;
   }
+
+  display(input:any) {
+    console.log(input);
+  }
+
+  // textA:string;
+  // textB:string;
+
+  // updateText(id: string, text: string){
+  //   if (id === "textA") {
+  //     this.textA = text;
+  //   } else {
+  //     this.textB = text;
+  //   }
+    
+  //   this.l.log(id + ': ' + text);
+  // }
 
 
   constructor(private l: LoggerService, private comparator: ComparatorService) { }
