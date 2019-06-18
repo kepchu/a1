@@ -13,7 +13,16 @@ export class ResultComponent implements OnInit {
   constructor(private comparator: ComparatorService) { }
 
   ngOnInit() {
-    this.comparator.getResults().subscribe(result => this.message = result);
+    this.comparator.getResults().subscribe(
+      (message) => {
+        // console.log(result);
+        // if (result) {
+        //   this.message = "Texts match";
+        // } else {
+        //   this.message = "Texts do not match";
+        // }
+        this.message = message;
+      });
   }
 
 }

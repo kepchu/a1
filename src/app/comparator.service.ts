@@ -35,6 +35,7 @@ export class ComparatorService {
     this.l.log(textB);
 
     this.result = textA.localeCompare(textB) === 0;
+    this.l.log("The result is: " + this.result);
   }
 
   getResults(): Observable<boolean> {
@@ -47,6 +48,5 @@ export class ComparatorService {
 
   constructor(private l: LoggerService, private interfaceStringsService: InterfaceStringsService) {
     this.messages = interfaceStringsService.comparator;
-    // l.log("constructor: " + this.messages);
   }
 }

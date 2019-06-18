@@ -1,12 +1,20 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <h1>
-    Welcome to {{ title }}!
+    {{ title }}.
   </h1>
 </div>
 
-<app-text-input></app-text-input>
+<nav>
+  <a routerLink="/compare">compare</a><br>
+  <a routerLink="/directives">directives</a><br>
+  <a routerLink="/circle">circle</a><br>
+</nav>
+
 <hr>
-<div style="background-color: lightgrey">
-  <app-result></app-result>
-</div>
+<router-outlet></router-outlet>
+<hr>
+
+
+<!-- <app-text-input></app-text-input> -->
+<hr>

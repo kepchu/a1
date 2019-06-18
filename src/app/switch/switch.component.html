@@ -1,0 +1,15 @@
+<div>
+  <button type="button" (click)="success = !success">Toggle</button>
+  <app-status-good *ngIf="success"></app-status-good>
+  <app-status-bad *ngIf="!success"></app-status-bad>
+</div>
+
+<div>
+  <button type="button" (click)="success2 = !success2">Toggle</button>
+
+  <app-status-good *ngIf="success2; else warning"></app-status-good>
+  <ng-template #warning>
+    <app-status-bad></app-status-bad>
+  </ng-template>
+
+</div>

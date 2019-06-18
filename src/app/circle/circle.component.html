@@ -1,0 +1,18 @@
+<div style="width: 1000px">
+  <!-- TODO: add "release" button, add color selector -->
+
+  Circle diameter is {{diameter}}
+  <br>
+  <input (input)="setDiameter($event)" type="range" min="0" max="1000" value="20" step="1" style="width: 1000px;">
+  <br>
+  Circle colour:
+  <input (input)="setColor($event)" type="color" value="#3F8" id="ccolor">
+
+  <div style="width: 1000px; height: 1000px; border: solid 1px black">
+    <div class="circle" [ngStyle]="{
+      'backgroundColor': bColor,
+      'width': getDiameter(),
+      'height': getDiameter()}">
+    </div>
+  </div>
+</div>
